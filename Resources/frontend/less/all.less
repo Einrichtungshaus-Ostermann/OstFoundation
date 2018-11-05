@@ -1,0 +1,208 @@
+/**
+ * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
+ *
+ * @package   OstFoundation
+ *
+ * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
+ * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
+ * @license   proprietary
+ */
+
+
+
+@colorLightGrey: #f7f7f7;
+@colorDarkGrey: #e1e1e1;
+@colorGreen: #339900;
+@colorSeaGreen: #3cb371;
+@colorLightGreen: #03bc22;
+@colorBlue: #0093d0;
+@colorSlateBlue: #6a5acd;
+@colorRed: #a12726;
+@colorYellow: #ffcc00;
+@colorOrange: #ff6600;
+@colorTurquoise: #4bccdf;
+@colorPurple: #800080;
+@colorLightPurple: #9370db;
+@colorViolet: #ee82ee;
+@colorBlack: #000000;
+@colorBrown: #8B4513;
+
+
+
+
+
+
+
+// global modifier
+.has--no-border { border: 0 !important; }
+.is--bold { font-weight: 700; }
+.is--normal { font-weight: 500; }
+.is--vertical-centered { text-align: center; display: flex; align-items: center;  justify-content: center; margin: 0; padding: 0; font-weight: bold; font-size: 100%; }
+.is--hidden { display: none; }
+.has--line-through { position: relative; }
+.has--line-through:after { content: ''; border-bottom: 2px solid @colorRed; position: absolute; left: 0; top: 50%; width: 100%; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); -o-transform: rotate(-5deg); transform: rotate(-30deg); opacity: 0.6; }
+
+
+
+
+// button colors
+.is--green { background-color: @colorGreen !important; border-color: @colorGreen !important; color: #ffffff !important; }
+.is--light-green { background-color: @colorLightGreen !important; border-color: @colorLightGreen !important; color: #ffffff !important; }
+.is--sea-green { background-color: @colorSeaGreen !important; border-color: @colorSeaGreen !important; color: #ffffff !important; }
+.is--blue { background-color: @colorBlue !important; border-color: @colorBlue !important; color: #ffffff !important; }
+.is--slate-blue { background-color: @colorSlateBlue !important; border-color: @colorSlateBlue !important; color: #ffffff !important; }
+.is--red { background-color: @colorRed !important; border-color: @colorRed !important; color: #ffffff !important; }
+.is--white { background-color: #ffffff !important; border-color: #ffffff !important; }
+.is--yellow { background-color: @colorYellow !important; border-color: @colorYellow !important; color: #ffffff !important; }
+.is--orange { background-color: @colorOrange !important; border-color: @colorOrange !important; color: #ffffff !important; }
+.is--black { background-color: #000000 !important; border-color: #000000 !important; color: #ffffff !important; }
+.is--turquoise { background-color: @colorTurquoise !important; border-color: @colorTurquoise !important; color: #ffffff !important; }
+.is--purple { background-color: @colorPurple !important; border-color: @colorPurple !important; color: #ffffff !important; }
+.is--light-purple { background-color: @colorLightPurple !important; border-color: @colorLightPurple !important; color: #ffffff !important; }
+.is--violet { background-color: @colorViolet !important; border-color: @colorViolet !important; color: #ffffff !important; }
+.is--black { background-color: @colorBlack !important; border-color: @colorBlack !important; color: #ffffff !important; }
+.is--light-gray { background-color: @colorLightGrey !important; border-color: @colorLightGrey !important; color: #ffffff !important; }
+.is--dark-gray { background-color: @colorDarkGrey !important; border-color: @colorDarkGrey !important; color: #ffffff !important; }
+.is--brown { background-color: @colorBrown !important; border-color: @colorBrown !important; color: #ffffff !important; }
+
+
+
+
+
+.is--button {
+    background-color: #f6f6f6;
+    border-color: #ddd;
+    color: #333;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+}
+
+// default button hover
+.is--button:hover {
+    background-color: #ededed;
+    border-color: #ddd;
+    color: #333;
+}
+
+.is--button:focus {
+    outline: none;
+}
+
+
+
+div.js--modal.sizing--fixed {
+    div.content {
+        height: ~"calc(100% - 42px)";
+        overflow: hidden;
+    }
+}
+
+
+
+
+
+
+
+div.ost-foundation--number-input {
+    .number-container {
+        button {
+            height: ~"calc(20% - 10px)";
+            width: ~"calc(33.3333% - 10px)";
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        button.is--output {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+div.ost-foundation--alert {
+    // ...
+    .message--outer {
+        width: 100%;
+        text-align: center;
+        height: ~"calc(100% - 55px)";
+    }
+
+    // ...
+    .message {
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 100%;
+        font-weight: normal;
+    }
+
+    // ...
+    .is--button {
+        position: absolute;
+        bottom: 0;
+        width: ~"calc(100% - 10px)";
+        margin: 5px;
+        height: 45px;
+    }
+
+    // align title
+    .title {
+        text-align: center;
+    }
+
+    // correct content height
+    .content {
+        height: ~"calc(100% - 63px)";
+        overflow: hidden;
+    }
+
+    // remove close button
+    div.btn.modal--close {
+        display: none;
+    }
+
+}
+
+
+
+// max height even when fixed sizing
+div.js--modal.sizing--fixed.ost-foundation--alert {
+    max-height: 300px !important;
+    max-width: 700px !important;
+}
+
+
+
+
+
+// default loading indicator
+.js--loading-indicator {
+
+    // our message
+    .message {
+        font-size: 14px;
+        line-height: 14px;
+        height: 14px;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        top: ~"calc(50% + 40px)";
+        color: #dadae6;
+
+        span {
+            font-size: 14px;
+            line-height: 14px;
+            height: 14px;
+        }
+    }
+
+}
