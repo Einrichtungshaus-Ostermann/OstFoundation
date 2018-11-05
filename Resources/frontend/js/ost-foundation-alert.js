@@ -35,7 +35,7 @@
         options: {},
 
         // the template
-        template: '<div class="message--outer" style=""><div class="message is--vertical-centered" style=""></div></div><button class="is--button" style="">Ok</button>',
+        template: '<div class="message--outer" style=""><div class="message" style=""></div></div><button class="is--button" style="">Ok</button>',
 
         // selectors
         selectors: {
@@ -83,6 +83,11 @@
             // set message
             me.$message.html( message );
             me.$el.find( "button" ).html( me.options.submitValue );
+
+            // do we want to valign?
+            if ( me.options.valign == true )
+                // add class
+                me.$message.addClass( "is--vertical-centered" );
 
             // bind events
             me._bindEvents();
