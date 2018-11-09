@@ -8,5 +8,39 @@
             <label><![CDATA[<b>Allgemeine Einstellungen</b>]]></label>
         </element>
 
+        <element type="select">
+            <name>company</name>
+            <label>Firma</label>
+            <value>1</value>
+            <description>...</description>
+            <store>
+                <option>
+                    <value>1</value>
+                    <label>Ostermann</label>
+                </option>
+                <option>
+                    <value>3</value>
+                    <label>Trends</label>
+                </option>
+            </store>
+        </element>
+
+        <element type="select">
+            <name>shop</name>
+            <label>Shop</label>
+            <value>online</value>
+            <description>...</description>
+            <store>
+                <option>
+                    <value>online</value>
+                    <label>Online</label>
+                </option>
+                <option>
+                    <value>inhouse</value>
+                    <label>Inhouse</label>
+                </option>
+            </store>
+        </element>
+
     </elements>
 </config>
