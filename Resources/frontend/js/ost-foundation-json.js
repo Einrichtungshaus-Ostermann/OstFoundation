@@ -1,3 +1,4 @@
+
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
  *
@@ -12,8 +13,6 @@
 
     // use strict mode
     "use strict";
-
-
 
     // ...
     $.ostFoundationJson = {
@@ -35,8 +34,6 @@
         // ...
         options: {},
 
-
-
         // ...
         get: function( options, callbackSuccess )
         {
@@ -52,14 +49,10 @@
             // set up
             me.callbacks.success = callbackSuccess;
 
-
-
             // open loading indicator
             if ( me.options.loadingIndicator == true )
                 // open it
                 $.ostFoundationLoadingIndicator.open( { message: me.options.loadingMessage } );
-
-
 
             // make call by method
             if ( me.options.method.toLowerCase() == "get" )
@@ -70,8 +63,6 @@
                     function( response ) { me._afterAjaxCall( response ); }
                 );
 
-
-
             // make post request
             $.post(
                 me.options.url,
@@ -80,8 +71,6 @@
                 "json"
             );
         },
-
-
 
         // ...
         _afterAjaxCall: function( response )
@@ -97,12 +86,6 @@
             // ...
             me.callbacks.success.call( me, response );
         }
-
-
-
     };
 
 })(jQuery);
-
-
-

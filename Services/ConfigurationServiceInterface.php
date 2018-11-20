@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
+
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
- *
- * Foundation
  *
  * @package   OstFoundation
  *
@@ -10,6 +9,7 @@
  * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
  * @license   proprietary
  */
+
 namespace OstFoundation\Services;
 
 interface ConfigurationServiceInterface
@@ -18,6 +18,7 @@ interface ConfigurationServiceInterface
      * ...
      *
      * @param string $pluginName
+     *
      * @return array
      */
     public function getConfig(string $pluginName): array;

@@ -1,3 +1,4 @@
+
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
  *
@@ -12,8 +13,6 @@
 
     // use strict mode
     "use strict";
-
-
 
     // ...
     $.ostFoundationNumberInput = {
@@ -64,8 +63,6 @@
         $output:       null,
         $input:        null,
 
-
-
         // ...
         open: function( title, options, callbackSubmit, callbackAbort, callbackValidator )
         {
@@ -113,8 +110,6 @@
             me.$output.html( me.input );
         },
 
-
-
         // ...
         _bindSelectors: function()
         {
@@ -132,8 +127,6 @@
             me.$input        = me.$el.find( me.selectors.number );
         },
 
-
-
         // ...
         _bindEvents: function()
         {
@@ -146,8 +139,6 @@
             me.$input.on( "click", function() { me._onInputClick( $( this ) ); } );
         },
 
-
-
         // ...
         _onClearClick: function ()
         {
@@ -158,8 +149,6 @@
             me.input = "";
             me.$output.html( "" );
         },
-
-
 
         // ...
         _onInputClick: function ( button )
@@ -177,8 +166,6 @@
             me.$output.html( me.input );
         },
 
-
-
         // ...
         _onCloseModal: function()
         {
@@ -193,10 +180,6 @@
             // call the abort callback
             me.callbacks.abort.call( me );
         },
-
-
-
-
 
         // ...
         _onSubmitClick: function ()
@@ -235,6 +218,3 @@
     };
 
 })(jQuery);
-
-
-

@@ -3,8 +3,6 @@
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
  *
- * Foundation
- *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
@@ -14,71 +12,54 @@
 
 namespace OstFoundation\Listeners\Controllers;
 
-use Enlight_Event_EventArgs as EventArgs;
 use Enlight_Controller_Action as Controller;
+use Enlight_Event_EventArgs as EventArgs;
 
 class Frontend
 {
-
     /**
-	 * ...
-	 *
-	 * @var string
-	 */
-
-	protected $viewDir;
-
-
+     * ...
+     *
+     * @var string
+     */
+    protected $viewDir;
 
     /**
      * ...
      *
      * @var array
      */
-
     protected $configuration;
-
-
-
-    /**
-	 * ...
-	 *
-	 * @param string           $viewDir
-     * @param array            $configuration
-	 */
-
-	public function __construct( $viewDir, array $configuration )
-	{
-		// set params
-		$this->viewDir        = $viewDir;
-		$this->configuration  = $configuration;
-	}
-
-
 
     /**
      * ...
      *
-     * @param EventArgs   $arguments
-     *
-     * @return void
+     * @param string $viewDir
+     * @param array  $configuration
      */
+    public function __construct($viewDir, array $configuration)
+    {
+        // set params
+        $this->viewDir = $viewDir;
+        $this->configuration = $configuration;
+    }
 
-    public function onPostDispatch( EventArgs $arguments )
+    /**
+     * ...
+     *
+     * @param EventArgs $arguments
+     */
+    public function onPostDispatch(EventArgs $arguments)
     {
         // get the controller
         /* @var $controller Controller */
-        $controller = $arguments->get( "subject" );
+        $controller = $arguments->get('subject');
 
         // get parameters
-        $request    = $controller->Request();
-        $view       = $controller->View();
+        $request = $controller->Request();
+        $view = $controller->View();
 
         // assign configuration
-        $view->assign( "ostFoundationConfiguration", $this->configuration );
+        $view->assign('ostFoundationConfiguration', $this->configuration);
     }
-
-
-
-
 }

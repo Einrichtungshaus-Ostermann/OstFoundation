@@ -1,9 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
- *
- * Foundation
  *
  * @package   OstFoundation
  *
@@ -24,11 +22,16 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
 {
+    /**
+     * ...
+     */
     const MODULES = ['Backend', 'Frontend', 'Widgets', 'Api'];
+
     /**
      * @var Plugin[]
      */
     private $plugins;
+
     /**
      * @param Plugin[] $plugins
      */
@@ -36,6 +39,7 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
     {
         $this->plugins = $plugins;
     }
+
     /**
      * @param ContainerBuilder $container
      */
@@ -55,8 +59,8 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
                 ->addTag(
                     'shopware.event_listener',
                     [
-                        'event' => $eventName,
-                        'method' => 'getControllerPath',
+                        'event'    => $eventName,
+                        'method'   => 'getControllerPath',
                         'priority' => 500,
                     ]
                 )
@@ -64,6 +68,7 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
         }
         $container->setDefinition('shopware.extended_generic_controller_listener', $listener);
     }
+
     /**
      * @param string[] $paths
      *
@@ -87,8 +92,10 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
             );
             $controllers[$eventName] = $this->buildNamespacedController($file);
         }
+
         return $controllers;
     }
+
     /**
      * @param Plugin[] $actives
      *
@@ -100,10 +107,13 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
             if (is_dir($plugin->getPath() . '/Controller')) {
                 return $plugin->getPath() . '/Controller';
             }
+
             return null;
         }, $actives);
+
         return array_filter($controllerPaths);
     }
+
     /**
      * @param string $module
      * @param string $controller
@@ -118,6 +128,7 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
             $controller
         );
     }
+
     /**
      * @param SplFileInfo $fileInfo
      *
@@ -126,6 +137,7 @@ class RegisterNamespacedControllerCompilerPass implements CompilerPassInterface
     private function buildNamespacedController(SplFileInfo $fileInfo)
     {
         $pathSplitted = explode(DIRECTORY_SEPARATOR, $fileInfo->getRealPath());
+
         return sprintf('%s\Controller\%s\%s',
             $pathSplitted[count($pathSplitted) - 4],
             $fileInfo->getPathInfo()->getBasename(),

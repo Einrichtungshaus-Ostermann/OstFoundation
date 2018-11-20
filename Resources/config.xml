@@ -12,7 +12,7 @@
             <name>company</name>
             <label>Firma</label>
             <value>1</value>
-            <description>...</description>
+            <description>Kontext der aktuellen Firma.</description>
             <store>
                 <option>
                     <value>1</value>
@@ -29,7 +29,7 @@
             <name>shop</name>
             <label>Shop</label>
             <value>online</value>
-            <description>...</description>
+            <description>Kontext des aktuellen Shops.</description>
             <store>
                 <option>
                     <value>online</value>

@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
+
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
- *
- * Foundation
  *
  * @package   OstFoundation
  *
@@ -27,35 +26,28 @@ class ConfigurationService implements ConfigurationServiceInterface
      */
     private $modelManager;
 
-
-
     /**
      * @var ContextServiceInterface
      */
     private $contextService;
-
-
 
     /**
      * @var CachedConfigReader
      */
     private $cachedConfigReader;
 
-
-
     /**
      * @var ContainerInterface
      */
     private $container;
 
-
-
     /**
      * ...
      *
-     * @param ModelManager $modelManager
+     * @param ModelManager            $modelManager
      * @param ContextServiceInterface $contextService
-     * @param CachedConfigReader $cachedConfigReader
+     * @param CachedConfigReader      $cachedConfigReader
+     * @param ContainerInterface      $container
      */
     public function __construct(ModelManager $modelManager, ContextServiceInterface $contextService, CachedConfigReader $cachedConfigReader, ContainerInterface $container)
     {
@@ -65,8 +57,9 @@ class ConfigurationService implements ConfigurationServiceInterface
         $this->container = $container;
     }
 
-
-
+    /**
+     * {@inheritdoc}
+     */
     public function getConfig(string $pluginName): array
     {
         $shopIsInitialized = $this->container->initialized('shop');
@@ -84,5 +77,4 @@ class ConfigurationService implements ConfigurationServiceInterface
 
         return $this->cachedConfigReader->getByPluginName($pluginName, $shop);
     }
-
 }

@@ -1,3 +1,4 @@
+
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
  *
@@ -12,8 +13,6 @@
 
     // use strict mode
     "use strict";
-
-
 
     // ...
     $.ostFoundationAlert = {
@@ -50,8 +49,6 @@
         $message: null,
         $submitButton: null,
 
-
-
         //
         open: function( message, options )
         {
@@ -60,8 +57,6 @@
 
             // set options
             me.options = $.extend( {}, me.defaults, options );
-
-
 
             // open a modal
             $.modal.open( me.template, {
@@ -78,8 +73,6 @@
             // set elements
             me._bindSelectors();
 
-
-
             // set message
             me.$message.html( message );
             me.$el.find( "button" ).html( me.options.submitValue );
@@ -92,13 +85,9 @@
             // bind events
             me._bindEvents();
 
-
-
             // call callback
             me.options.afterOpenCallback.call( me );
         },
-
-
 
         // ...
         _bindSelectors: function()
@@ -113,8 +102,6 @@
             me.$submitButton = me.$el.find( me.selectors.submitButton );
         },
 
-
-
         // ...
         _bindEvents: function()
         {
@@ -125,16 +112,12 @@
             me.$submitButton.on( "click", function() { me._onSubmitClick(); } );
         },
 
-
-
         // ...
         _onSubmitClick: function ()
         {
             // close the modal
             $.modal.close();
         },
-
-
 
         // ...
         _onCloseModal: function ()
@@ -144,10 +127,6 @@
                 this
             );
         }
-
-
     };
 
 })(jQuery);
-
-

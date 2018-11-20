@@ -40,31 +40,28 @@ class OstFoundation extends Plugin
         // call parent builder
         parent::build($container);
 
-        /**
+        /*
          * Fix until https://github.com/shopware/shopware/pull/1484 is merged
          * @author Tim Windelschmidt <tim.windelschmidt@ostermann.de>
          */
-        {
-            /** @var Kernel|AppCache */
-            global $kernel;
 
-            if ($kernel instanceof AppCache) {
-                $kernel = $kernel->getKernel();
-            }
+        /* @var Kernel|AppCache */
+        global $kernel;
 
-            $activePlugins = [];
-            foreach ($kernel->getPlugins() as $plugin) {
-                if (!$plugin->isActive()) {
-                    continue;
-                }
-                $activePlugins[] = $plugin;
-            }
-
-            $container->addCompilerPass(new RegisterNamespacedControllerCompilerPass($activePlugins));
+        if ($kernel instanceof AppCache) {
+            $kernel = $kernel->getKernel();
         }
+
+        $activePlugins = [];
+        foreach ($kernel->getPlugins() as $plugin) {
+            if (!$plugin->isActive()) {
+                continue;
+            }
+            $activePlugins[] = $plugin;
+        }
+
+        $container->addCompilerPass(new RegisterNamespacedControllerCompilerPass($activePlugins));
     }
-
-
 
     /**
      * Activate the plugin.
@@ -76,8 +73,6 @@ class OstFoundation extends Plugin
         // clear complete cache after we activated the plugin
         $context->scheduleClearCache($context::CACHE_LIST_ALL);
     }
-
-
 
     /**
      * Install the plugin.
@@ -108,8 +103,6 @@ class OstFoundation extends Plugin
         parent::install($context);
     }
 
-
-
     /**
      * Update the plugin.
      *
@@ -127,8 +120,6 @@ class OstFoundation extends Plugin
         // call default updater
         parent::update($context);
     }
-
-
 
     /**
      * Uninstall the plugin.
