@@ -1,0 +1,44 @@
+/**
+ * Einrichtungshaus Ostermann GmbH & Co. KG - Foundation
+ *
+ * @package   OstFoundation
+ *
+ * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
+ * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
+ * @license   proprietary
+ */
+
+
+div.ost-foundation--calendar {
+    .calendar-container {
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+        overflow: hidden;
+
+        button {
+            height: ~"calc(12.5% - 10px)";
+            width: ~"calc(12.5% - 10px)";
+            margin: 5px;
+        }
+
+        button.is--month {
+            width: ~"calc(75% - 10px)";
+            margin: 5px;
+        }
+
+        button.is--last-month-day, button.is--next-month-day {
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #cccccc;
+        }
+
+        button.is--today {
+            background: #3f5866;
+            color: #ffffff;
+        }
+    }
+}
+
+
+
