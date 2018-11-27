@@ -153,9 +153,9 @@ Date.prototype.getWeekNumber = function(){
 
 
 
-            calendar += '<button class="is--button" data-previous-month="true">&lt;</button>';
+            calendar += '<button class="is--button is--month-navigation" data-previous-month="true">&lt;</button>';
             calendar += '<button class="is--button is--month">' + months[me.month - 1] + ' ' + me.year + '</button>';
-            calendar += '<button class="is--button" data-next-month="true">&gt;</button>';
+            calendar += '<button class="is--button is--month-navigation" data-next-month="true">&gt;</button>';
 
 
             var weekdays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
