@@ -182,7 +182,7 @@
                 }
                 else
                     me.$summary.html( me.$summary.html() + input );
-                
+
                 // special case for 0 as current input
                 me.input = ( me.input == "0" )
                     ? input
