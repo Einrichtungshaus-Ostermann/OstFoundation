@@ -11,6 +11,9 @@
  * 1.0.1
  * - code beautify for js calendar
  *
+ * 1.0.2
+ * - fixed plugin name
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
