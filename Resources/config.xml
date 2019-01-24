@@ -22,6 +22,10 @@
                     <value>3</value>
                     <label>Trends</label>
                 </option>
+                <option>
+                    <value>99</value>
+                    <label>Moebel-Shop</label>
+                </option>
             </store>
         </element>
 

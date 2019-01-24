@@ -14,6 +14,9 @@
  * 1.0.2
  * - fixed plugin name
  *
+ * 1.0.3
+ * - added moebel-shop to company context configuration
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
