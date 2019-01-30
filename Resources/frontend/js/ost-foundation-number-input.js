@@ -39,11 +39,13 @@
         // default options
         defaults: {
             castToInteger: true,
-            defaultValue:  ""
+            defaultValue:  "",
+            submitButton: "Bestätigen",
+            clearButton: "Löschen"
         },
 
         // ...
-        template: '<div class="number-container"><button style="letter-spacing: 6px;" class="is--button is--blue is--bold is--output" data-output="true"></button><button class="is--button" data-number="true" data-input="1">1</button><button class="is--button" data-number="true" data-input="2">2</button><button class="is--button" data-number="true" data-input="3">3</button><button class="is--button" data-number="true" data-input="4">4</button><button class="is--button" data-number="true" data-input="5">5</button><button class="is--button" data-number="true" data-input="6">6</button><button class="is--button" data-number="true" data-input="7">7</button><button class="is--button" data-number="true" data-input="8">8</button><button class="is--button" data-number="true" data-input="9">9</button><button class="is--button is--red" data-clear="true">Löschen</button><button class="is--button" data-number="true" data-input="0">0</button><button class="is--button is--green" data-submit="true">Bestätigen</button></div>',
+        template: '<div class="number-container"><button style="letter-spacing: 6px;" class="is--button is--blue is--bold is--output" data-output="true"></button><button class="is--button" data-number="true" data-input="1">1</button><button class="is--button" data-number="true" data-input="2">2</button><button class="is--button" data-number="true" data-input="3">3</button><button class="is--button" data-number="true" data-input="4">4</button><button class="is--button" data-number="true" data-input="5">5</button><button class="is--button" data-number="true" data-input="6">6</button><button class="is--button" data-number="true" data-input="7">7</button><button class="is--button" data-number="true" data-input="8">8</button><button class="is--button" data-number="true" data-input="9">9</button><button class="is--button is--red" data-clear="true">#clear-button#</button><button class="is--button" data-number="true" data-input="0">0</button><button class="is--button is--green" data-submit="true">#submit-button#</button></div>',
 
         // our input
         input: "",
@@ -88,8 +90,13 @@
             // set defaults
             me.actionButtonClicked = false;
 
+            // get the template and replace placeholders
+            var template = me.template;
+            template = template.replace( "#submit-button#", me.options.submitButton );
+            template = template.replace( "#clear-button#", me.options.clearButton );
+
             // open a modal with our template
-            $.modal.open( me.template, {
+            $.modal.open( template, {
                 title:           title,
                 sizing:          "fixed",
                 width:           "60%",
