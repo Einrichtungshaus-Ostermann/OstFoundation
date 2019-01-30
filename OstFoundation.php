@@ -20,6 +20,9 @@
  * 1.0.4
  * - added configuration options to number-input
  *
+ * 1.0.5
+ * - added decimals configuration option to number-input
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

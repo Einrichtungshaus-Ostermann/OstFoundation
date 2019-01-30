@@ -8,7 +8,6 @@
  * @license   proprietary
  */
 
-
 div.ost-foundation--number-input {
     .number-container {
         height: 100%;
@@ -26,8 +25,18 @@ div.ost-foundation--number-input {
             width: ~"calc(100% - 10px)";
             margin: 5px;
         }
+
+        button.is--decimal-button {
+            display: none;
+        }
+    }
+
+    .number-container.has--decimals {
+        button.is--clear-button {
+            display: none;
+        }
+        button.is--decimal-button {
+            display: inline-block;
+        }
     }
 }
-
-
-

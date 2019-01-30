@@ -41,11 +41,12 @@
             castToInteger: true,
             defaultValue:  "",
             submitButton: "Bestätigen",
-            clearButton: "Löschen"
+            clearButton: "Löschen",
+            hasDecimals: false
         },
 
         // ...
-        template: '<div class="number-container"><button style="letter-spacing: 6px;" class="is--button is--blue is--bold is--output" data-output="true"></button><button class="is--button" data-number="true" data-input="1">1</button><button class="is--button" data-number="true" data-input="2">2</button><button class="is--button" data-number="true" data-input="3">3</button><button class="is--button" data-number="true" data-input="4">4</button><button class="is--button" data-number="true" data-input="5">5</button><button class="is--button" data-number="true" data-input="6">6</button><button class="is--button" data-number="true" data-input="7">7</button><button class="is--button" data-number="true" data-input="8">8</button><button class="is--button" data-number="true" data-input="9">9</button><button class="is--button is--red" data-clear="true">#clear-button#</button><button class="is--button" data-number="true" data-input="0">0</button><button class="is--button is--green" data-submit="true">#submit-button#</button></div>',
+        template: '<div class="number-container#additional-class#"><button style="letter-spacing: 6px;" class="is--button is--blue is--bold is--output" data-output="true"></button><button class="is--button" data-number="true" data-input="1">1</button><button class="is--button" data-number="true" data-input="2">2</button><button class="is--button" data-number="true" data-input="3">3</button><button class="is--button" data-number="true" data-input="4">4</button><button class="is--button" data-number="true" data-input="5">5</button><button class="is--button" data-number="true" data-input="6">6</button><button class="is--button" data-number="true" data-input="7">7</button><button class="is--button" data-number="true" data-input="8">8</button><button class="is--button" data-number="true" data-input="9">9</button><button class="is--button is--red is--clear-button" data-clear="true">#clear-button#</button><button class="is--button" data-number="true" data-input="0">0</button><button class="is--button is--decimal-button" data-number="true" data-input=",">,</button><button class="is--button is--green is--submit-button" data-submit="true">#submit-button#</button></div>',
 
         // our input
         input: "",
@@ -94,6 +95,7 @@
             var template = me.template;
             template = template.replace( "#submit-button#", me.options.submitButton );
             template = template.replace( "#clear-button#", me.options.clearButton );
+            template = template.replace( "#additional-class#", ( me.options.hasDecimals == true ) ? " has--decimals" : "" );
 
             // open a modal with our template
             $.modal.open( template, {
@@ -166,8 +168,18 @@
             // get the new input
             var input = button.attr( "data-input" );
 
+            // only one decimal char
+            if (me.input.indexOf(",") !== -1 && input == ",")
+                // nothing to do
+                return;
+
             // always allow every character so we can even start with 0
             me.input = me.input + "" + input;
+
+            // only a decimal without leading zero?
+            if ( me.input == "," )
+                // add leading zero
+                me.input = "0,";
 
             // and re-draw the output
             me.$output.html( me.input );
