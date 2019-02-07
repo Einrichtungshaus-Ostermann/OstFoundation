@@ -23,6 +23,9 @@
  * 1.0.5
  * - added decimals configuration option to number-input
  *
+ * 1.0.6
+ * - removed compiler pass for auto registration of namespaced controllers
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
@@ -32,11 +35,8 @@
 
 namespace OstFoundation;
 
-use OstFoundation\CompilerPass\RegisterNamespacedControllerCompilerPass;
-use Shopware\Components\HttpCache\AppCache;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context;
-use Shopware\Kernel;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class OstFoundation extends Plugin
@@ -54,28 +54,6 @@ class OstFoundation extends Plugin
 
         // call parent builder
         parent::build($container);
-
-        /*
-         * Fix until https://github.com/shopware/shopware/pull/1484 is merged
-         * @author Tim Windelschmidt <tim.windelschmidt@ostermann.de>
-         */
-
-        /* @var Kernel|AppCache */
-        global $kernel;
-
-        if ($kernel instanceof AppCache) {
-            $kernel = $kernel->getKernel();
-        }
-
-        $activePlugins = [];
-        foreach ($kernel->getPlugins() as $plugin) {
-            if (!$plugin->isActive()) {
-                continue;
-            }
-            $activePlugins[] = $plugin;
-        }
-
-        $container->addCompilerPass(new RegisterNamespacedControllerCompilerPass($activePlugins));
     }
 
     /**
