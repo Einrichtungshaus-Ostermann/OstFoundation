@@ -26,6 +26,9 @@
  * 1.0.6
  * - removed compiler pass for auto registration of namespaced controllers
  *
+ * 1.0.7
+ * - added timeout with failure callback to js json wrapper
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
