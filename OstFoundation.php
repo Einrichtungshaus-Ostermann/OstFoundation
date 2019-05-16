@@ -29,6 +29,9 @@
  * 1.0.7
  * - added timeout with failure callback to js json wrapper
  *
+ * 1.0.8
+ * - added no-header option for modal plugins
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

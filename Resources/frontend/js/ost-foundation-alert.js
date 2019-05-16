@@ -40,7 +40,8 @@
         selectors: {
             container:    'div.ost-foundation--alert',
             message:      '.message',
-            submitButton: 'button'
+            submitButton: 'button',
+            noHeader: false
         },
 
         // components
@@ -49,7 +50,7 @@
         $message: null,
         $submitButton: null,
 
-        //
+        // ...
         open: function( message, options )
         {
             // get this
@@ -66,7 +67,7 @@
                 height:          me.options.height,
                 animationSpeed:  0,
                 keyboardClosing: false,
-                additionalClass: "ost-foundation--alert" + ( ( me.options.additionalClass == "" ) ? "" : " " + me.options.additionalClass ),
+                additionalClass: "ost-foundation--alert" + ((me.options.noHeader === true) ? " no--header" : "") + ( ( me.options.additionalClass == "" ) ? "" : " " + me.options.additionalClass ),
                 onClose:         function() { me._onCloseModal() }
             });
 

@@ -42,7 +42,8 @@
             defaultValue:  "",
             submitButton: "Bestätigen",
             clearButton: "Löschen",
-            hasDecimals: false
+            hasDecimals: false,
+            noHeader: false
         },
 
         // ...
@@ -105,7 +106,7 @@
                 height:          "80%",
                 animationSpeed:  0,
                 keyboardClosing: false,
-                additionalClass: "ost-foundation--number-input",
+                additionalClass: "ost-foundation--number-input" + ((me.options.noHeader === true) ? " no--header" : ""),
                 onClose:         function() { me._onCloseModal(); }
             });
 
