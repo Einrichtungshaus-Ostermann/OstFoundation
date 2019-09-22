@@ -32,6 +32,10 @@
  * 1.0.8
  * - added no-header option for modal plugins
  *
+ * 1.1.0
+ * - added default attributes
+ * - added default configuration values to installation
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
@@ -94,7 +98,9 @@ class OstFoundation extends Plugin
         // update it to current version
         $updater = new Setup\Update(
             $this,
-            $context
+            $context,
+            $this->container->get('models'),
+            $this->container->get('shopware_attribute.crud_service')
         );
         $updater->install();
 
@@ -112,7 +118,9 @@ class OstFoundation extends Plugin
         // update the plugin
         $updater = new Setup\Update(
             $this,
-            $context
+            $context,
+            $this->container->get('models'),
+            $this->container->get('shopware_attribute.crud_service')
         );
         $updater->update($context->getCurrentVersion());
 
