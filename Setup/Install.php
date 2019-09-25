@@ -449,6 +449,9 @@ class Install
 
         // media settings
         $this->installSql('008');
+
+        // custom search facet
+        $this->installSql('009');
     }
 
     /**
