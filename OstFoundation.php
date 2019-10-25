@@ -39,6 +39,9 @@
  * 1.1.1
  * - added custom search facet to installation
  *
+ * 1.1.2
+ * - added attributes
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

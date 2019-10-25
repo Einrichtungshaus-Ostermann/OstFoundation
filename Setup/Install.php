@@ -88,6 +88,18 @@ class Install
                 ]
             ],
             [
+                'column' => 'attr6',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'IWM Meta Text',
+                    'helpText'         => 'IWM Meta Text',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 6
+                ]
+            ],
+            [
                 'column' => 'attr9',
                 'type'   => 'string',
                 'data'   => [
@@ -97,6 +109,18 @@ class Install
                     'displayInBackend' => true,
                     'custom'           => true,
                     'position'         => 9
+                ]
+            ],
+            [
+                'column' => 'attr10',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'IWM Textverwendungskennzeichen - Hersteller Name',
+                    'helpText'         => 'IWM Textverwendungskennzeichen - Hersteller Name',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 10
                 ]
             ],
             [
@@ -169,6 +193,18 @@ class Install
                     'displayInBackend' => true,
                     'custom'           => true,
                     'position'         => 16
+                ]
+            ],
+            [
+                'column' => 'attr17',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'IWM Textverwendungskennzeichen - Mitbewerber Name',
+                    'helpText'         => 'IWM Textverwendungskennzeichen - Mitbewerber Name',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 17
                 ]
             ],
             [
