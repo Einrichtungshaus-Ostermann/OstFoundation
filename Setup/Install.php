@@ -232,6 +232,30 @@ class Install
                 ]
             ],
             [
+                'column' => 'attr21',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'IWM Koje',
+                    'helpText'         => 'IWM Koje',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 21
+                ]
+            ],
+            [
+                'column' => 'attr22',
+                'type'   => 'boolean',
+                'data'   => [
+                    'label'            => 'IWM Limitierte Sichtbarkeit',
+                    'helpText'         => 'IWM Limitierte Sichtbarkeit',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 22
+                ]
+            ],
+            [
                 'column' => 'stock_wit',
                 'type'   => 'integer',
                 'data'   => [

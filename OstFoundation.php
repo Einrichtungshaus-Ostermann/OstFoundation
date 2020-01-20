@@ -42,6 +42,9 @@
  * 1.1.2
  * - added attributes
  *
+ * 1.1.3
+ * - added attributes attr21 and attr22
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
