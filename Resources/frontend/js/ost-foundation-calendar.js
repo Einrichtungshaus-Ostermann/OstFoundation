@@ -30,9 +30,10 @@ Date.prototype.getWeekNumber = function(){
 
         // selectors
         selectors: {
-            container:        'div.ost-foundation--calendar',
-            previousMonthButton:      'button[data-previous-month="true"]',
+            container: 'div.ost-foundation--calendar',
+            previousMonthButton: 'button[data-previous-month="true"]',
             nextMonthButton: 'button[data-next-month="true"]',
+            selectableDay: 'button.is--current-month.is--day'
         },
 
         // more options...
@@ -41,6 +42,8 @@ Date.prototype.getWeekNumber = function(){
 
         // default options
         defaults: {
+            selectable: false,
+            callback: function(year, month, day) {}
         },
 
         // body
@@ -52,16 +55,14 @@ Date.prototype.getWeekNumber = function(){
         // buttons
         $previousMonthButton: null,
         $nextMonthButton: null,
-
-
+        $selectableDay: null,
 
         // current data
         month: null,
         year: null,
 
-
         // ...
-        open: function( title, options )
+        open: function(title, options)
         {
             // get this
             var me = this;
@@ -109,6 +110,7 @@ Date.prototype.getWeekNumber = function(){
             me.$el   = me.$body.find( me.selectors.container );
             me.$previousMonthButton = me.$el.find( me.selectors.previousMonthButton );
             me.$nextMonthButton = me.$el.find( me.selectors.nextMonthButton );
+            me.$selectableDay = me.$el.find( me.selectors.selectableDay );
         },
 
         // ...
@@ -120,6 +122,7 @@ Date.prototype.getWeekNumber = function(){
             // set listeners
             me.$previousMonthButton.on( "click", function() { me._onPreviousMonthClick( $( this ) ); } );
             me.$nextMonthButton.on( "click", function() { me._onNextMonthClick( $( this ) ); } );
+            me.$selectableDay.on( "click", function() { me._onSelectableDayClick( $( this ) ); } );
         },
 
         // ...
@@ -189,7 +192,7 @@ Date.prototype.getWeekNumber = function(){
                 var isToday = ( today.getFullYear() == me.year && today.getMonth() + 1 == me.month && today.getDate() == i );
 
                 // show current day
-                calendar += '<button class="is--button is--day' + ( ( isToday == true ) ? ' is--today' : '' ) + '">' + i + '</button>';
+                calendar += '<button data-day="' + i + '" class="is--button is--current-month is--day' + ( ( isToday == true ) ? ' is--today' : '' ) + '">' + i + '</button>';
 
                 // calculate weekday
                 var weekday = new Date(me.year + "-" + me.month + "-" + i).getDay();
@@ -294,10 +297,79 @@ Date.prototype.getWeekNumber = function(){
         },
 
         // ...
+        _onSelectableDayClick: function ( button )
+        {
+            // get this
+            var me = this;
+
+            // selectable?
+            if (me.options.selectable === false) {
+                // do nothing
+                return;
+            }
+
+            // close modal
+            $.modal.close();
+
+            // call the callback
+            me.options.callback.call(me, me.year, me.month, button.data('day'));
+        },
+
+        // ...
         _onCloseModal: function()
         {
         }
-
     };
+
+
+
+    // our plugin
+    $.plugin( "ostFoundationCalendarDateSelection", {
+
+        // on initialization
+        init: function ()
+        {
+            // get this
+            var me = this;
+
+            // admin delete
+            me._on( me.$el, 'click', $.proxy( me.onOpenCalendar, me ) );
+        },
+
+        // ...
+        onOpenCalendar: function ( event )
+        {
+            // get this
+            var me = this;
+
+            // open calendar
+            $.ostFoundationCalendar.open(
+                'Kalender',
+                {
+                    selectable: true,
+                    callback: function(year, month, day)
+                    {
+                        me.$el.html(day.toString() + '.' + month.toString() + '.' + year.toString())
+                    }
+                }
+            )
+        },
+
+        // on destroy
+        destroy: function()
+        {
+            // get this
+            var me = this;
+
+            // call the parent
+            me._destroy();
+        }
+
+    });
+
+
+
+    // call our plugin
+    $('*[data-ost-foundation-calendar-date-selection="true"]').ostFoundationCalendarDateSelection();
 
 })(jQuery);

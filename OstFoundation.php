@@ -45,6 +45,9 @@
  * 1.1.3
  * - added attributes attr21 and attr22
  *
+ * 1.1.4
+ * - added selectable days to js calendar plugin
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
