@@ -48,6 +48,9 @@
  * 1.1.4
  * - added selectable days to js calendar plugin
  *
+ * 1.1.5
+ * - added selectable weeks to js calendar plugin
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

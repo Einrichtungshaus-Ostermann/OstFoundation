@@ -33,7 +33,8 @@ Date.prototype.getWeekNumber = function(){
             container: 'div.ost-foundation--calendar',
             previousMonthButton: 'button[data-previous-month="true"]',
             nextMonthButton: 'button[data-next-month="true"]',
-            selectableDay: 'button.is--current-month.is--day'
+            selectableDay: 'button.is--current-month.is--day',
+            selectableWeek: 'button.is--calendar-week'
         },
 
         // more options...
@@ -43,7 +44,9 @@ Date.prototype.getWeekNumber = function(){
         // default options
         defaults: {
             selectable: false,
-            callback: function(year, month, day) {}
+            selectableWeek: false,
+            callback: function(year, month, day) {},
+            callbackWeek: function(year, week) {}
         },
 
         // body
@@ -56,6 +59,7 @@ Date.prototype.getWeekNumber = function(){
         $previousMonthButton: null,
         $nextMonthButton: null,
         $selectableDay: null,
+        $selectableWeek: null,
 
         // current data
         month: null,
@@ -111,6 +115,7 @@ Date.prototype.getWeekNumber = function(){
             me.$previousMonthButton = me.$el.find( me.selectors.previousMonthButton );
             me.$nextMonthButton = me.$el.find( me.selectors.nextMonthButton );
             me.$selectableDay = me.$el.find( me.selectors.selectableDay );
+            me.$selectableWeek = me.$el.find( me.selectors.selectableWeek );
         },
 
         // ...
@@ -123,6 +128,7 @@ Date.prototype.getWeekNumber = function(){
             me.$previousMonthButton.on( "click", function() { me._onPreviousMonthClick( $( this ) ); } );
             me.$nextMonthButton.on( "click", function() { me._onNextMonthClick( $( this ) ); } );
             me.$selectableDay.on( "click", function() { me._onSelectableDayClick( $( this ) ); } );
+            me.$selectableWeek.on( "click", function() { me._onSelectableWeekClick( $( this ) ); } );
         },
 
         // ...
@@ -170,7 +176,7 @@ Date.prototype.getWeekNumber = function(){
             var calendarWeek = new Date(me.year + "-" + me.month + "-01").getWeekNumber();
 
             // first calendar week
-            calendar += '<button class="is--button is--calendar-week">' + calendarWeek + '</button>';
+            calendar += '<button data-week="' + calendarWeek + '" class="is--button is--calendar-week">' + calendarWeek + '</button>';
 
             // first row with days from last month
             for ( var j = 1; j <= weekday - 1; j++ )
@@ -205,7 +211,7 @@ Date.prototype.getWeekNumber = function(){
                     calendarWeek++;
 
                     // week number of next row
-                    calendar += '<button class="is--button is--calendar-week">' + calendarWeek + '</button>';
+                    calendar += '<button data-week="' + calendarWeek + '" class="is--button is--calendar-week">' + calendarWeek + '</button>';
                 }
 
             }
@@ -225,7 +231,7 @@ Date.prototype.getWeekNumber = function(){
                     calendar += '<button class="is--button is--next-month-day">' + nextMonthDay++ + '</button>';
 
                 // finish with calendar week
-                calendar += '<button class="is--button is--calendar-week">' + ( calendarWeek + 1 ) + '</button>';
+                calendar += '<button data-week="' + calendarWeek + '" class="is--button is--calendar-week">' + ( calendarWeek + 1 ) + '</button>';
 
             }
 
@@ -316,6 +322,25 @@ Date.prototype.getWeekNumber = function(){
         },
 
         // ...
+        _onSelectableWeekClick: function ( button )
+        {
+            // get this
+            var me = this;
+
+            // selectable?
+            if (me.options.selectableWeek === false) {
+                // do nothing
+                return;
+            }
+
+            // close modal
+            $.modal.close();
+
+            // call the callback
+            me.options.callbackWeek.call(me, me.year, button.data('week'));
+        },
+
+        // ...
         _onCloseModal: function()
         {
         }
@@ -349,10 +374,10 @@ Date.prototype.getWeekNumber = function(){
                     selectable: true,
                     callback: function(year, month, day)
                     {
-                        me.$el.html(day.toString() + '.' + month.toString() + '.' + year.toString())
+                        me.$el.html(day.toString() + '.' + month.toString() + '.' + year.toString());
                     }
                 }
-            )
+            );
         },
 
         // on destroy
