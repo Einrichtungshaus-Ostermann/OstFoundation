@@ -256,6 +256,30 @@ class Install
                 ]
             ],
             [
+                'column' => 'attr23',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'IWM Direktversand',
+                    'helpText'         => 'Ist dieser Artikel ein Dropshipping-Artikel?',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 23
+                ]
+            ],
+            [
+                'column' => 'attr24',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'Synonyme',
+                    'helpText'         => 'Synonyme für die Suche',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => true,
+                    'position'         => 54
+                ]
+            ],
+            [
                 'column' => 'stock_wit',
                 'type'   => 'integer',
                 'data'   => [

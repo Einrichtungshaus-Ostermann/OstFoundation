@@ -51,6 +51,9 @@
  * 1.1.5
  * - added selectable weeks to js calendar plugin
  *
+ * 1.1.6
+ * - added attributes attr23 and attr24
+ *
  * @package   OstFoundation
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
